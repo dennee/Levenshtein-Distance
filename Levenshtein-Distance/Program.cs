@@ -17,14 +17,14 @@ namespace Levenshtein_Distance
             {
                 Console.WriteLine("Input string for operations:");
                 Console.Write("First string: ");
-                _firstString = Console.ReadLine();
+                _firstString = Console.ReadLine().ToLower();
                 Console.Write("Second string: ");
-                _secondString = Console.ReadLine();
+                _secondString = Console.ReadLine().ToLower();
             }
             else
             {
-                _firstString = args[0];
-                _secondString = args[1];
+                _firstString = args[0].ToLower();
+                _secondString = args[1].ToLower();
             }
             Console.WriteLine("First string length: {0}", _firstString.Length);
             Console.WriteLine("Second string length: {0}", _secondString.Length);
