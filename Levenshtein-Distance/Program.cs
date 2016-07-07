@@ -26,6 +26,8 @@ namespace Levenshtein_Distance
                 _firstString = args[0];
                 _secondString = args[1];
             }
+            Console.WriteLine("First string length: {0}", _firstString.Length);
+            Console.WriteLine("Second string length: {0}", _secondString.Length);
             var distance = ApplyAlgorithm();
             var concurrence = CalculateConcurrence(distance);
             Console.WriteLine();
@@ -62,7 +64,9 @@ namespace Levenshtein_Distance
         private static double CalculateConcurrence(int distance)
         {
             var concurrence = 0.0;
-            concurrence = (distance*100)/_firstString.Length;
+            concurrence = (distance*100)/((_firstString.Length > _secondString.Length)
+                ? _firstString.Length
+                : _secondString.Length);
             concurrence = Math.Round(concurrence, 2);
             concurrence = 100 - concurrence;
             return concurrence;
