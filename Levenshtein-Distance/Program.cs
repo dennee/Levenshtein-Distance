@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,11 @@ namespace Levenshtein_Distance
         private static string _firstString;
         private static string _secondString;
 
+        private static Stopwatch _stopwatch;
+
         static void Main(string[] args)
         {
+            _stopwatch = new Stopwatch();
             if (args.Length == 0)
             {
                 Console.WriteLine("Input string for operations:");
@@ -28,10 +32,13 @@ namespace Levenshtein_Distance
             }
             Console.WriteLine("First string length: {0}", _firstString.Length);
             Console.WriteLine("Second string length: {0}", _secondString.Length);
+            _stopwatch.Start();
             var distance = ApplyAlgorithm();
             var concurrence = CalculateConcurrence(distance);
+            _stopwatch.Stop();
             Console.WriteLine();
-            Console.WriteLine("Concurrence: {0}%", concurrence);
+            Console.WriteLine($"Concurrence: {concurrence}%");
+            Console.WriteLine($"Execution time: {_stopwatch.ElapsedMilliseconds}ms");
             Console.ReadKey();
         }
 
