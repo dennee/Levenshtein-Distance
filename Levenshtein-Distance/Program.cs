@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace Levenshtein_Distance
 {
     class Program
     {
+        private const string INPUT_FILE_NAME = "input.txt";
+
         private static string _firstString;
         private static string _secondString;
 
@@ -17,7 +20,22 @@ namespace Levenshtein_Distance
         static void Main(string[] args)
         {
             _stopwatch = new Stopwatch();
-            if (args.Length == 0)
+            if (File.Exists(INPUT_FILE_NAME))
+            {
+
+                using (var reader = new StreamReader(File.OpenRead(INPUT_FILE_NAME)))
+                {
+                    var buffer = new List<string>();
+                    while (!reader.EndOfStream)
+                    {
+                        var textLine = reader.ReadLine();
+                        buffer.Add(textLine);
+                    }
+                    _firstString = buffer[0].ToLower();
+                    _secondString = buffer[1].ToLower();
+                }
+            }
+            else if (args.Length == 0)
             {
                 Console.WriteLine("Input string for operations:");
                 Console.Write("First string: ");
