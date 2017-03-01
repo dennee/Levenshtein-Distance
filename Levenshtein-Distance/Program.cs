@@ -55,6 +55,7 @@ namespace Levenshtein_Distance
             var concurrence = CalculateConcurrence(distance);
             _stopwatch.Stop();
             Console.WriteLine();
+            Console.WriteLine($"Distance: {distance}");
             Console.WriteLine($"Concurrence: {concurrence}%");
             Console.WriteLine($"Execution time: {_stopwatch.ElapsedMilliseconds}ms");
             Console.ReadKey();
@@ -82,7 +83,7 @@ namespace Levenshtein_Distance
                         matrix[i - 1, j - 1] + difference);
                 }
             }
-            DisplayMatrix(matrix);
+            //DisplayMatrix(matrix);
             return matrix[_firstString.Length, _secondString.Length];
         }
 
