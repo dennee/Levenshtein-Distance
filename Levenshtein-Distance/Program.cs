@@ -83,7 +83,7 @@ namespace Levenshtein_Distance
                         matrix[i - 1, j - 1] + difference);
                 }
             }
-            //DisplayMatrix(matrix);
+            DisplayMatrix(matrix);
             return matrix[_firstString.Length, _secondString.Length];
         }
 
